@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
+
+  namespace :api do
   get 'posts' => 'posts#index'
   resources :subreddits, except: [:destroy] do
     resources :posts, except: [:destroy] do
@@ -13,5 +15,9 @@ Rails.application.routes.draw do
   resources :votes, only: [:create, :update, :destroy]
   resource :session, only: [:create, :destroy]
   get 'home/index'
+  resources :posts, only: [:index, :show] do
+
+    end
+  end
 end
 

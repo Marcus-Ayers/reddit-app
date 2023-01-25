@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Layout from '@src/layout';
 import Create_post from './create_post';
-import Content from './content';
+// import Content from './content';
 // import Feed from './feed';
 import { handleErrors } from '/Users/marcus/Documents/web-dev/Altcademy/reddit-app/app/javascript/src/utils/fetchHelper';
 
@@ -14,12 +14,14 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/posts')
+    fetch('/api/posts.json')
       .then(handleErrors)
       .then(data => {
+        console.log(data)
         this.setState({
           posts: data.posts,
           loading: false,
+          
         })
       })
   }
@@ -32,7 +34,7 @@ class Home extends React.Component {
           <div className="row">
             <div className="col-7 mr-5 content">
               <Create_post />
-              <div className="posts">
+              <div className="posts123">
               
               {posts.map(post => {
               return (
@@ -40,7 +42,6 @@ class Home extends React.Component {
                   <a href={`/post/${post.subreddit}`} className="text-body text-decoration-none">
                     <p className="text-uppercase mb-0 text-secondary"><small><b>{post.body}</b></small></p>
                     <h6 className="mb-0">{post.title}</h6>
-                    <p className="mb-0"><small>${post.price_per_night} USD/night</small></p>
                   </a>
                 </div>
               )

@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :votes, dependent: :destroy
 
   validates :title, presence: true
-  validates :subreddit, presence: true
+  # validates :subreddit, presence: true
   validates :user, presence: true
 
   def upvote
