@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   root to: 'static_pages#home'
 
   namespace :api do
-  get 'posts' => 'posts#index'
+  # get 'posts' => 'posts#index'
   resources :subreddits, except: [:destroy] do
-    resources :posts, except: [:destroy] do
+    resources :posts, only: [:index, :show] do
       resources :comments, only: [:create, :update, :destroy]
     end
     resources :subscriptions, only: [:create, :destroy]

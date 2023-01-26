@@ -35,8 +35,11 @@ ActiveRecord::Schema.define(version: 2023_01_18_015724) do
   end
 
   create_table "sessions", force: :cascade do |t|
+    t.string "token"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
   create_table "subreddits", force: :cascade do |t|
@@ -63,4 +66,5 @@ ActiveRecord::Schema.define(version: 2023_01_18_015724) do
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "subreddits"
   add_foreign_key "posts", "users"
+  add_foreign_key "sessions", "users"
 end
