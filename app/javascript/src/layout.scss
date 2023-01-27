@@ -25,7 +25,39 @@ body, .content  {
 
 .post {
   background-color: red;
-  
+  max-width: 100%!important;
+  border-radius: 5px;
+  border: 1px solid rgb(53, 53, 53);
+}
+
+.post:hover {
+  border: 1px solid rgb(211, 211, 211);
+}
+
+.subreddit-name {
+  color: white;
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.post-info {
+  font-size: 12px;
+  margin-left: 10px;
+  color: rgb(129, 131, 132);
+}
+
+.post-title {
+  color: white;
+  font-weight: 300;
+}
+
+.post-header p{
+  display: inline-flex;
+}
+
+.subreddit-name:hover {
+  text-decoration: underline;
 }
 
 .info {
@@ -36,7 +68,7 @@ body, .content  {
   background-color: #1A1A1B;
   border-radius: 6px;
   height: 50px;
-  border: 1px solid rgb(79, 79, 79)
+  border: 1px solid rgb(53,53,53)
 }
 
 .create-post {
@@ -56,7 +88,7 @@ body, .content  {
   width: 35px
 }
 
-.home-background {
+.home-background, .post {
   background-color: #1A1A1B;
 
 }

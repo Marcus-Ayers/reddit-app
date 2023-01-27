@@ -38,13 +38,17 @@ class Home extends React.Component {
               <div className="posts123">
               {posts.map(post => {
               return (
-                <div key={post.id} className="col-6 col-lg-4 mb-2 post">
-                  <p>r/{post.subreddit.name}</p>
+                <div key={post.id} className="col-6 col-lg-4 mb-3 post">
+                  <div className="post-header">
+
                   <a href={`/subreddit/${post.id}`} className="text-body text-decoration-none">
-                  {/* <h6 className="mb-0">{post.subreddit}</h6> */}
-                    <h6 className="mb-0">{post.title}</h6>
-                    <p className="text-uppercase mb-0 text-secondary"><small><b>{post.body}</b></small></p>
+                  <p className='subreddit-name'>r/{post.subreddit.name} </p>
+                  <p className='post-info'>Posted by u/{post.user.username} {post.created_at}</p>
                   </a>
+                  </div>
+                    <h6 className="mb-3 post-title">{post.title}</h6>
+                    <p>{}</p>
+                    {/* <p className="text-uppercase mb-0 text-secondary"><small><b>{post.body}</b></small></p> */}
                   
 
                 </div>
