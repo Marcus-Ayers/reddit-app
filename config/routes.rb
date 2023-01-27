@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
 
+  get '/subreddit/:id' => 'static_pages#subreddit'
+
   namespace :api do
   # get 'posts' => 'posts#index'
   resources :subreddits, except: [:destroy] do

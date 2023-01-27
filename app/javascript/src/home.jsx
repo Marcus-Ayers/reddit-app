@@ -15,7 +15,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/subreddits/1/posts')
+    fetch('/api/posts')
       .then(handleErrors)
       .then(data => {
         console.log(data)
@@ -38,8 +38,9 @@ class Home extends React.Component {
               <div className="posts123">
               {posts.map(post => {
               return (
-                <div key={post.id} className="col-6 col-lg-4 mb-4 post">
-                  <a href={`/api/subreddits${subreddit.id}`} className="text-body text-decoration-none">
+                <div key={post.id} className="col-6 col-lg-4 mb-2 post">
+                  <p>r/{post.subreddit.name}</p>
+                  <a href={`/subreddit/${post.id}`} className="text-body text-decoration-none">
                   {/* <h6 className="mb-0">{post.subreddit}</h6> */}
                     <h6 className="mb-0">{post.title}</h6>
                     <p className="text-uppercase mb-0 text-secondary"><small><b>{post.body}</b></small></p>
