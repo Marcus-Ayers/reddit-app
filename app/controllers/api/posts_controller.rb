@@ -1,5 +1,6 @@
 module Api
   class PostsController < ApplicationController
+    
     def index
       @posts = Post.order(created_at: :desc)
       return render json: { error: 'not_found' }, status: :not_found if !@posts

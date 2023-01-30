@@ -15,7 +15,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/posts')
+    fetch(`/api/subreddits/${this.props.subreddit_id}/posts`)
       .then(handleErrors)
       .then(data => {
         console.log(data)
@@ -46,7 +46,9 @@ class Home extends React.Component {
                   <p className='post-info'>Posted by u/{post.user.username} {post.created_at}</p>
                   </a>
                   </div>
+                  <a href={`post/${post.id}`}>
                     <h6 className="mb-3 post-title">{post.title}</h6>
+                  </a>
                     <p>{}</p>
                     {/* <p className="text-uppercase mb-0 text-secondary"><small><b>{post.body}</b></small></p> */}
                   
