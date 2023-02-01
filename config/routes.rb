@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # get 'posts' => 'posts#index'
   resources :subreddits, except: [:destroy] do
     resources :posts, only: [:index, :show] do
-      resources :comments, only: [:create, :update, :destroy]
+      resources :comments, only: [:create, :update, :destroy, :index]
     end
     resources :subscriptions, only: [:create, :destroy]
   end
