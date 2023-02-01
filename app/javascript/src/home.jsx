@@ -2,9 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Layout from '@src/layout';
 import Create_post from './create_post';
-
-// import Content from './content';
-// import Feed from './feed';
 import { handleErrors } from '/Users/marcus/Documents/web-dev/Altcademy/reddit-app/app/javascript/src/utils/fetchHelper';
 
 
@@ -13,12 +10,23 @@ class Home extends React.Component {
     posts: [],
     
   }
-
+  // componentDidMount() {
+  //   fetch(`/api/subreddits/${this.props.subreddit_id}`)
+  //     .then(handleErrors)
+  //     .then(data => {
+  //       console.log(data)
+  //       this.setState({
+  //         subreddits: data.subreddits,
+  //         loading: false,
+          
+  //       })
+  //     })
+  // }
   componentDidMount() {
     fetch(`/api/subreddits/${this.props.subreddit_id}/posts`)
       .then(handleErrors)
       .then(data => {
-        console.log(data)
+        // console.log(data)
         this.setState({
           posts: data.posts,
           loading: false,
@@ -41,7 +49,7 @@ class Home extends React.Component {
                 <div key={post.id} className="col-6 col-lg-4 mb-3 post">
                   <div className="post-header">
 
-                  <a href={`/subreddit/${post.id}`} className="text-body text-decoration-none">
+                  <a href={`/subreddit/${post.subreddit.id}`} className="text-body text-decoration-none">
                   <p className='subreddit-name'>r/{post.subreddit.name} </p>
                   <p className='post-info'>Posted by u/{post.user.username} {post.created_at}</p>
                   </a>
@@ -49,20 +57,17 @@ class Home extends React.Component {
                   <a href={`post/${post.id}`}>
                     <h6 className="mb-3 post-title">{post.title}</h6>
                   </a>
-                    <p>{}</p>
-                    {/* <p className="text-uppercase mb-0 text-secondary"><small><b>{post.body}</b></small></p> */}
-                  
-
                 </div>
               )
             })}
-          
               </div>
             </div>
-            
-            <div className="col-4 info">
-              {/* INFO ABOUT SUBREDDIT/PAGE ON RIGHT SIDE*/}
+            {/* <div className="col-4 info">
+               <div className="col-4 info">
+              <h1 className='subreddit-name'>{post.subreddit.name}</h1>
+
             </div>
+            </div> */}
           </div>
         </div>
       </Layout>

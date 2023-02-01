@@ -24,7 +24,7 @@ body, .content  {
 }
 
 .post {
-  background-color: red;
+  background-color: rgb(38, 0, 255);
   max-width: 100%!important;
   border-radius: 5px;
   border: 1px solid rgb(53, 53, 53);
@@ -60,8 +60,14 @@ body, .content  {
   text-decoration: underline;
 }
 
+.name-infobox, .description-infobox {
+  color: white;
+}
+
 .info {
-  background-color: rgba(255, 0, 0, 0.172);
+  background-color: rgba(0, 255, 55, 0.172);
+  border: 1px solid white;
+  max-height: 300px;
 }
 
 .stuff {

@@ -6,10 +6,12 @@ import Create_post from './create_post';
 
 class Subreddit extends React.Component {
   state = {
-    subreddit: {},
+    subreddit: [],
+    posts: [],
     loading: true,
   }
 
+  
   componentDidMount() {
     fetch(`/api/subreddits/${this.props.subreddit_id}`)
       .then(handleErrors)
@@ -19,9 +21,8 @@ class Subreddit extends React.Component {
           subreddit: data.subreddit,
           loading: false,
         })
-      })
-  }
-  componentDidMount() {
+      });
+    
     fetch(`/api/subreddits/${this.props.subreddit_id}/posts`)
       .then(handleErrors)
       .then(data => {
@@ -29,10 +30,13 @@ class Subreddit extends React.Component {
         this.setState({
           posts: data.posts,
           loading: false,
-          
         })
-      })
+      });
   }
+  
+  
+  
+  
 
   render () {
     const { subreddit, loading, posts } = this.state;
@@ -46,20 +50,14 @@ class Subreddit extends React.Component {
       description,
       created_at,
     } = subreddit
+    console.log(name)
 
     return (
       <Layout>
-        {/* <div className="property-image mb-3" style={{ backgroundImage: `url(${image_url})` }} /> */}
-        <div className="container">
+        
+        <div className="container background">
           <div className="row">
-            <div className="info col-12 col-lg-8">
-              <div className="mb-3">
-                <h3 className="mb-0">{name}</h3>
-                <p className="text-uppercase mb-0 text-secondary"><small>{description}</small></p>
-                {/* <p className="mb-0"><small>Hosted by <b>{user.username}</b></small></p> */}
-              </div>
-
-              <div className="col-7 mr-5 content">
+            <div className=" col-7 mr-5 content">
               <Create_post />
               <div className="posts123">
               {posts.map(post => {
@@ -67,26 +65,30 @@ class Subreddit extends React.Component {
                 <div key={post.id} className="col-6 col-lg-4 mb-3 post">
                   <div className="post-header">
 
-                  <a href={`/subreddit/${post.id}`} className="text-body text-decoration-none">
+                  <a href={`/subreddit/${subreddit.id}`} className="text-body text-decoration-none">
                   <p className='subreddit-name'>r/{post.subreddit.name} </p>
                   <p className='post-info'>Posted by u/{post.user.username} {post.created_at}</p>
                   </a>
                   </div>
+                  <a href={`${this.props.subreddit_id}/post/${post.id}`}>
                     <h6 className="mb-3 post-title">{post.title}</h6>
-                    <p>{}</p>
-                    {/* <p className="text-uppercase mb-0 text-secondary"><small><b>{post.body}</b></small></p> */}
-                  
-
+                  </a>                  
                 </div>
               )
             })}
-          
               </div>
+            </div>
+          
+          
+            <div className="col-4 info">
+              <h1 className='name-infobox'>{name}</h1>
+              <h5 className='description-infobox'>{description}</h5>
+
             </div>
 
             </div>
+            
           </div>
-        </div>
       </Layout>
     )
   }

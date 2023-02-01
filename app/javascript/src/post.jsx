@@ -54,10 +54,10 @@ class Post extends React.Component {
       <Layout>
         <div className="container">
           <div className="row">
-            <div className="info col-12 col-lg-8">
+            <div className=" col-12 col-lg-8">
               <div className="mb-3">
                 <h3 className="mb-0">{title}</h3>
-                <p className="mb-0"><small>Hosted by <b>{post.body}</b></small></p>
+                <p className="mb-0"><small><b>{post.body}</b></small></p>
               </div>
               <hr />
             </div>

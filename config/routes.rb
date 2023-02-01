@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get '/subreddit/:id' => 'static_pages#subreddit'
   get '/post/:id' => 'static_pages#post'
+  get 'subreddit/:id/post/:id' => 'static_pages#post'
 
 
   namespace :api do
