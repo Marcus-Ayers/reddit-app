@@ -7,12 +7,13 @@ import Create_post from './create_post';
 class Post extends React.Component {
   state = {
     post: {},
-    subreddit: {},
+    subreddit: [],
+    comments: [],
     loading: true,
   }
 
   componentDidMount() {
-    fetch(`/api/subreddits/${this.props.subreddit_id}`)
+    fetch(`/api/subreddits/`)
       .then(handleErrors)
       .then(data => {
         console.log(data)
@@ -20,11 +21,8 @@ class Post extends React.Component {
           subreddit: data.subreddit,
           loading: false,
         })
-      })
-  }
+      });
 
-
-  componentDidMount() {
     fetch(`/api/subreddits/${this.props.subreddit_id}/posts/${this.props.post_id}`)
       .then(handleErrors)
       .then(data => {
@@ -47,8 +45,13 @@ class Post extends React.Component {
       title,
       body,
       subreddit,
-      name,
+      
     } = post
+    const {
+      description,
+      name,
+      
+    } = subreddit
 
     return (
       <Layout>
@@ -60,6 +63,15 @@ class Post extends React.Component {
                 <p className="mb-0"><small><b>{post.body}</b></small></p>
               </div>
               <hr />
+            </div>
+            <div className="col-4 info">
+              <div className="info-box-container">
+              <img src='https://www.redditstatic.com/desktop2x/img/id-cards/snoo-home@2x.png' className='info-box-image'></img>
+              <h3 className='name-infobox'>{name}</h3>
+              </div>
+              <p className='description-infobox'>{description}</p>
+              <button type="button" className="btn btn-light create-post-button">Create Post</button>
+
             </div>
           </div>
         </div>

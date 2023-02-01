@@ -3,6 +3,7 @@ json.post do
   json.title @post.title
   json.body @post.body
   json.subreddit @post.subreddit
+  json.comments @post.comments
 
   # json.user do
   #   json.id @subreddit.user.id

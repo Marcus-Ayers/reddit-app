@@ -81,8 +81,12 @@ class Subreddit extends React.Component {
           
           
             <div className="col-4 info">
-              <h1 className='name-infobox'>{name}</h1>
-              <h5 className='description-infobox'>{description}</h5>
+              <div className="info-box-container">
+              <img src='https://www.redditstatic.com/desktop2x/img/id-cards/snoo-home@2x.png' className='info-box-image'></img>
+              <h3 className='name-infobox'>{name}</h3>
+              </div>
+              <p className='description-infobox'>{description}</p>
+              <button type="button" class="btn btn-light create-post-button">Create Post</button>
 
             </div>
 
