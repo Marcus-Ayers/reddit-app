@@ -1,19 +1,18 @@
 module Api
   class UsersController < ApplicationController
-    def create
-      @user = User.new(user_params)
+    
+    def index
+      @users = User.order(created_at: :desc)
+      return render json: { error: 'not_found' }, status: :not_found if !@users
 
-      if @user.save
-        render 'api/users/create'
-      else
-        render json: { success: false }
-      end
+      render 'api/users/index', status: :ok
     end
 
-    private
+    # def show
+    #   @post = Post.find_by(id: params[:id])
+    #   return render json: { error: 'not_found' }, status: :not_found if !@post
 
-    def user_params
-      params.require(:user).permit(:email, :password, :username)
-    end
+    #   render 'api/posts/show', status: :ok
+    # end
   end
 end

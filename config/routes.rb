@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/subreddit/:id' => 'static_pages#subreddit'
   get '/post/:id' => 'static_pages#post'
   get 'subreddit/:id/post/:id' => 'static_pages#post'
+  get '/user/:id' => 'static_pages#user'
 
 
   namespace :api do
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
     end
     resources :subscriptions, only: [:create, :destroy]
   end
-  resources :users, except: [:index, :destroy] do
+  resources :users, except: [:destroy] do
     resources :subscriptions, only: [:index]
   end
   resources :votes, only: [:create, :update, :destroy]
