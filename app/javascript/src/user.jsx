@@ -30,15 +30,18 @@ class User extends React.Component {
     const {
       id,
       username,
+      email,
     } = user
 
     return (
       <Layout>
         <div className="container">
           <div className="col-12">
-            <div className="row">
-              <h1>Test</h1>
-              <h1>{username}</h1>
+            <div className="row user-page">
+              <h1 className='user-page-info'>{username}</h1>
+              <div className="row user-page2">
+              <p className='user-page-info'>{email}</p>
+              </div>
             </div>
           </div>
         </div>

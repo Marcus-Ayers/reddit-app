@@ -67,6 +67,10 @@ body, .content  {
   text-decoration: underline;
 }
 
+.user-name:hover {
+  text-decoration: underline;
+}
+
 .name-infobox, .description-infobox {
   color: white;
 }
@@ -145,4 +149,24 @@ body, .content  {
   margin-right: 10px;
   height: 40px;
   width: 40px;
+}
+
+.user-page {
+display: flex;
+min-height: 250px;
+background-color: #1A1A1B;
+margin-top: 15px;
+width: 100%;
+justify-content: center;
+border: solid 1px rgb(79,79,79);
+border-radius: 5px;
+}
+.user-page2 {
+  display: flex;
+  justify-content: center;
+  min-height: 250px;
+  width: 100%
+}
+.user-page-info {
+  color: white;
 }

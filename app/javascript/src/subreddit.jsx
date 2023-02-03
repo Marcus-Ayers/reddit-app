@@ -67,7 +67,9 @@ class Subreddit extends React.Component {
 
                   <a href={`/subreddit/${subreddit.id}`} className="text-body text-decoration-none">
                   <p className='subreddit-name'>r/{post.subreddit.name} </p>
-                  <p className='post-info'>Posted by u/{post.user.username} {post.created_at}</p>
+                  </a>
+                  <a href={`/user/${post.user.id}`}>
+                  <p className='post-info user-name'>Posted by u/{post.user.username} {post.created_at}</p>
                   </a>
                   </div>
                   <a href={`${this.props.subreddit_id}/post/${post.id}`}>
@@ -86,7 +88,7 @@ class Subreddit extends React.Component {
               <h3 className='name-infobox'>{name}</h3>
               </div>
               <p className='description-infobox'>{description}</p>
-              <button type="button" class="btn btn-light create-post-button">Create Post</button>
+              <button type="button" className="btn btn-light create-post-button">Create Post</button>
 
             </div>
 
