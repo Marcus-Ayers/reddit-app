@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import Layout from '@src/layout';
 import { handleErrors } from '@utils/fetchHelper';
 
-
 class User extends React.Component {
   state = {
     user: {},
