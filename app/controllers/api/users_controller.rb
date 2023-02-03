@@ -8,11 +8,11 @@ module Api
       render 'api/users/index', status: :ok
     end
 
-    # def show
-    #   @post = Post.find_by(id: params[:id])
-    #   return render json: { error: 'not_found' }, status: :not_found if !@post
+    def show
+      @user = User.find_by(id: params[:id])
+      return render json: { error: 'not_found' }, status: :not_found if !@user
 
-    #   render 'api/posts/show', status: :ok
-    # end
+      render 'api/users/show', status: :ok
+    end
   end
 end

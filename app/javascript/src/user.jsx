@@ -1,4 +1,3 @@
-// property.jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Layout from '@src/layout';
@@ -12,7 +11,7 @@ class User extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/users/${this.props.user_id}`)
+    fetch(`/api/users/3`)
       .then(handleErrors)
       .then(data => {
         this.setState({
@@ -30,12 +29,19 @@ class User extends React.Component {
 
     const {
       id,
-      title,
+      username,
     } = user
 
     return (
       <Layout>
-        
+        <div className="container">
+          <div className="col-12">
+            <div className="row">
+              <h1>Test</h1>
+              <h1>{username}</h1>
+            </div>
+          </div>
+        </div>
       </Layout>
     )
   }

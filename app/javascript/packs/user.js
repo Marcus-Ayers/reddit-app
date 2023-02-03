@@ -1,1 +1,2 @@
-import '@user/property';
+// property.js
+import '@src/user';
