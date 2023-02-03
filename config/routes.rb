@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get '/post/:id' => 'static_pages#post'
   get 'subreddit/:id/post/:id' => 'static_pages#post'
   get '/user/:id' => 'static_pages#user'
-  get '/login' => 'static_pages#login'
 
 
   namespace :api do
