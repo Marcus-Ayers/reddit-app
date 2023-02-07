@@ -13,8 +13,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show] do
       resources :comments, only: [:create, :update, :destroy, :index]
     end
-    resources :subscriptions, only: [:create, :destroy]
-  end
+
   resources :users, except: [:destroy] do
     resources :subscriptions, only: [:index]
   end
