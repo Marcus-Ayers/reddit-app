@@ -80,16 +80,6 @@ Comment.create(body: 'This is a sample comment', post: Post.first, user: User.fi
 Comment.create(body: 'This is a sample comment', post: Post.second, user: User.second)
 Comment.create(body: 'This is a sample comment', post: Post.third, user: User.third)
 
-
-
-
-
-
-
-
-
-
-
 end
 
 # # create some sample users
