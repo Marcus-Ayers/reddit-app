@@ -24,4 +24,4 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  database: test_database
+  database: prod_database
