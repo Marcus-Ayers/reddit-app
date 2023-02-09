@@ -118,7 +118,8 @@ class Post extends React.Component {
 document.addEventListener('DOMContentLoaded', () => {
   const node = document.getElementById('params');
   const data = JSON.parse(node.getAttribute('data-params'));
-  console.log(data.subreddit_id)
+  console.log("The subreddit ID is " + data.subreddit_id)
+  console.log("The post ID is " + data.post_id)
   ReactDOM.render(
     <Post subreddit_id={data.subreddit_id} post_id={data.post_id} />,
     document.body.appendChild(document.createElement('div')),
