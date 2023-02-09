@@ -21,4 +21,12 @@ class User < ApplicationRecord
   def subscribed_to?(subreddit)
     self.subscriptions.find_by(subreddit: subreddit).present?
   end
+  
+  after_validation :hash_password
+
+  private
+
+  def hash_password
+    self.password = BCrypt::Password.create(password)
+  end
 end

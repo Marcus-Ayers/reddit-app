@@ -20,11 +20,13 @@ Rails.application.routes.draw do
     resources :subscriptions, only: [:index]
   end
   resources :votes, only: [:create, :update, :destroy]
-  resource :session, only: [:create, :destroy]
+  resource :sessions, only: [:create, :destroy]
   get 'home/index'
   # resources :posts, only: [:index, :show] do
 
   #   end
+  get '/authenticated' => 'sessions#authenticated'
+
   end
 end
 
