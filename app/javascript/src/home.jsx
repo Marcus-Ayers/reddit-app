@@ -24,16 +24,28 @@ class Home extends React.Component {
   //     })
   // }
   componentDidMount() {
-    fetch(`/api/subreddits/${this.props.subreddit_id}/posts`)
+    fetch(`/api/posts/all`)
       .then(handleErrors)
       .then(data => {
-        // console.log(data)
+        console.log(data)
         this.setState({
           posts: data.posts,
           loading: false,
           
         })
       })
+      // fetch(`/api/subreddits`)
+      // .then(handleErrors)
+      // .then(data => {
+      //   // console.log(data)
+      //   this.setState({
+      //     posts: data.posts,
+      //     loading: false,
+          
+      //   })
+      // })
+      
+      
   }
 
   render () {

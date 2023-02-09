@@ -4,5 +4,9 @@ json.subreddits do
     json.name subreddit.name
     json.description subreddit.description
     json.posts subreddit.posts
+
+    # json.posts do
+    #   json.id subreddit.post.id
+    # end
   end
 end

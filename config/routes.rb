@@ -22,9 +22,8 @@ Rails.application.routes.draw do
   resources :votes, only: [:create, :update, :destroy]
   resource :sessions, only: [:create, :destroy]
   get 'home/index'
-  # resources :posts, only: [:index, :show] do
+  get 'posts/all', to: 'posts#all'
 
-  #   end
   get '/authenticated' => 'sessions#authenticated'
 
   end
