@@ -18,7 +18,7 @@ class Post extends React.Component {
     fetch(`/api/subreddits/${this.props.subreddit_id}`)
       .then(handleErrors)
       .then(data => {
-        console.log("hello1")
+        // console.log("hello1")
         this.setState({
           subreddit: data.subreddit,
           loading: false,
@@ -28,8 +28,8 @@ class Post extends React.Component {
     fetch(`/api/subreddits/${this.props.subreddit_id}/posts/${this.props.post_id}`)
       .then(handleErrors)
       .then(data => {
-        console.log("hello2")
-        console.log(`Subreddit ID: ${this.props.subreddit_id}`);
+        // console.log("hello2")
+        // console.log(`Subreddit ID: ${this.props.subreddit_id}`);
         this.setState({
           post: data.post,
           loading: false,
@@ -38,7 +38,7 @@ class Post extends React.Component {
       fetch(`/api/subreddits/${this.props.subreddit_id}/posts`)
       .then(handleErrors)
       .then(data => {
-        console.log("hello3")
+        // console.log("hello3")
         this.setState({
           posts: data.posts,
           loading: false,
@@ -49,7 +49,7 @@ class Post extends React.Component {
       fetch(`/api/subreddits/${this.props.subreddit_id}/posts/${this.props.post_id}/comments`)
       .then(handleErrors)
       .then(data => {
-        console.log("hello4 " + data)
+        // console.log("hello4 " + data)
         this.setState({
           posts: data.posts,
           loading: false,
@@ -80,7 +80,7 @@ class Post extends React.Component {
      body,
    } = comment
 
-   console.log(body)
+  //  console.log(body)
 
     return (
       <Layout>
@@ -118,7 +118,7 @@ class Post extends React.Component {
 document.addEventListener('DOMContentLoaded', () => {
   const node = document.getElementById('params');
   const data = JSON.parse(node.getAttribute('data-params'));
-  
+  console.log(data.subreddit_id)
   ReactDOM.render(
     <Post subreddit_id={data.subreddit_id} post_id={data.post_id} />,
     document.body.appendChild(document.createElement('div')),

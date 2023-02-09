@@ -16,7 +16,7 @@ class Subreddit extends React.Component {
     fetch(`/api/subreddits/${this.props.subreddit_id}`)
       .then(handleErrors)
       .then(data => {
-        console.log("hello9")
+        // console.log("hello9")
         this.setState({
           subreddit: data.subreddit,
           loading: false,
@@ -26,7 +26,7 @@ class Subreddit extends React.Component {
     fetch(`/api/subreddits/${this.props.subreddit_id}/posts`)
       .then(handleErrors)
       .then(data => {
-        console.log("hello8")
+        // console.log("hello8")
         this.setState({
           posts: data.posts,
           loading: false,

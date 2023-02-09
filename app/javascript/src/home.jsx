@@ -11,18 +11,7 @@ class Home extends React.Component {
     posts: [],
     
   }
-  // componentDidMount() {
-  //   fetch(`/api/subreddits/${this.props.subreddit_id}`)
-  //     .then(handleErrors)
-  //     .then(data => {
-  //       console.log(data)
-  //       this.setState({
-  //         subreddits: data.subreddits,
-  //         loading: false,
-          
-  //       })
-  //     })
-  // }
+  
   componentDidMount() {
     fetch(`/api/posts/all`)
       .then(handleErrors)
@@ -33,19 +22,7 @@ class Home extends React.Component {
           loading: false,
           
         })
-      })
-      // fetch(`/api/subreddits`)
-      // .then(handleErrors)
-      // .then(data => {
-      //   // console.log(data)
-      //   this.setState({
-      //     posts: data.posts,
-      //     loading: false,
-          
-      //   })
-      // })
-      
-      
+      })  
   }
 
   render () {
