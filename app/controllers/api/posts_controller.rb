@@ -1,6 +1,5 @@
 module Api
   class PostsController < ApplicationController
-    
     def all
       @posts = Post.all.order(created_at: :desc)
       render 'api/posts/index', status: :ok

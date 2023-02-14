@@ -46,7 +46,7 @@ class Home extends React.Component {
                   <p className='post-info user-name'>Posted by u/{post.user.username} {post.created_at}</p>
                   </a>
                   </div>
-                  <a href={`post/${post.id}`}>
+                  <a href={`subreddit/${post.subreddit.id}/post/${post.id}`}>
                     <h6 className="mb-3 post-title">{post.title}</h6>
                   </a>
                 </div>
