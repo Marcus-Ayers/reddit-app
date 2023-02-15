@@ -9,12 +9,6 @@ module Api
         render json: { success: false }, status: :bad_request
       end
     end
-
-    private
-
-    def user_params
-      params.require(:user).permit(:email, :password, :username)
-    end
     
     def index
       @users = User.order(created_at: :desc)
@@ -29,5 +23,12 @@ module Api
 
       render 'api/users/show', status: :ok
     end
+
+    private
+
+    def user_params
+      params.require(:user).permit(:email, :password, :username)
+    end
+
   end
 end
