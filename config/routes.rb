@@ -5,12 +5,15 @@ Rails.application.routes.draw do
   get 'subreddit/:sub_id/post/:post_id' => 'static_pages#post'
   get '/user/:id' => 'static_pages#user'
   get '/login' => 'static_pages#login'
+  delete '/sessions' => 'sessions#destroy'
 
 
 
   namespace :api do
     post '/users' => 'users#create'
     post '/sessions' => 'sessions#create'
+    delete '/sessions' => 'sessions#destroy'
+
 
   # get 'posts' => 'posts#index'
   resources :subreddits, except: [:destroy] do
