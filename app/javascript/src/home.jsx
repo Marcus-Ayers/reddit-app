@@ -9,6 +9,7 @@ import { handleErrors } from '@utils/fetchHelper';
 class Home extends React.Component {
   state = {
     posts: [],
+    subreddits: []
     
   }
   
@@ -23,10 +24,20 @@ class Home extends React.Component {
           
         })
       })  
+
+      fetch(`/api/subreddits`)
+      .then(handleErrors)
+      .then(data => {
+        console.log(data)
+        this.setState({
+          subreddits: data.subreddits,
+          loading: false,
+        })
+      }) 
   }
 
   render () {
-    const {posts } = this.state;
+    const {posts, subreddits } = this.state;
     return (
       <Layout>
         <div className="container background">
@@ -54,12 +65,16 @@ class Home extends React.Component {
             })}
               </div>
             </div>
-            {/* <div className="col-4 info">
-               <div className="col-4 info">
-              <h1 className='subreddit-name'>{post.subreddit.name}</h1>
-
+            <div className="col-4 info">
+              <h1 className='subreddits-header text-danger'>Subreddits</h1>
+              {subreddits.map(subreddit => (
+                <div key={subreddit.id}>
+                  <a href={`/subreddit/${subreddit.id}`} className="subreddit-name">
+                    <p>r/{subreddit.name}</p>
+                  </a>
+                </div>
+              ))}
             </div>
-            </div> */}
           </div>
         </div>
       </Layout>
