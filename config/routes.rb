@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/login' => 'static_pages#login'
   delete '/sessions' => 'sessions#destroy'
 
-
+  
 
   namespace :api do
     post '/users' => 'users#create'
