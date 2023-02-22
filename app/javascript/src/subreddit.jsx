@@ -50,7 +50,7 @@ class Subreddit extends React.Component {
       description,
       created_at,
     } = subreddit
-    console.log(name)
+    console.log("subreddit.jsx " + name)
 
     return (
       <Layout>
@@ -58,7 +58,7 @@ class Subreddit extends React.Component {
         <div className="container background">
           <div className="row">
             <div className=" col-7 mr-5 content">
-              <Create_post />
+              <Create_post subredditId={this.props.subreddit_id}/>
               <div className="posts123">
               {posts.map(post => {
               return (

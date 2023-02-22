@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/user/:id' => 'static_pages#user'
   get '/login' => 'static_pages#login'
   delete '/sessions' => 'sessions#destroy'
+  post '/subreddits/:sub_id/posts' => 'posts#create'
+
 
   
 
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
     post '/users' => 'users#create'
     post '/sessions' => 'sessions#create'
     delete '/sessions' => 'sessions#destroy'
+    post '/subreddits/:sub_id/posts' => 'posts#create'
 
 
   # get 'posts' => 'posts#index'

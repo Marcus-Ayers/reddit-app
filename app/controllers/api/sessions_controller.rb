@@ -5,7 +5,7 @@ module Api
 
       if @user && (BCrypt::Password.new(@user.password) == params[:user][:password])
         session = @user.sessions.create
-        cookies.permanent.signed[:airbnb_session_token] = {
+        cookies.permanent.signed[:reddit_session_token] = {
           value: session.token,
           httponly: true
         }
