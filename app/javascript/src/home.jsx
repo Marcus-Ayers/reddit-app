@@ -17,7 +17,7 @@ class Home extends React.Component {
     fetch(`/api/posts/all`)
       .then(handleErrors)
       .then(data => {
-        console.log(data)
+        // console.log(data)
         this.setState({
           posts: data.posts,
           loading: false,
@@ -28,7 +28,7 @@ class Home extends React.Component {
       fetch(`/api/subreddits`)
       .then(handleErrors)
       .then(data => {
-        console.log(data)
+        // console.log(data)
         this.setState({
           subreddits: data.subreddits,
           loading: false,
@@ -43,7 +43,6 @@ class Home extends React.Component {
         <div className="container background">
           <div className="row">
             <div className="col-7 mr-5 content">
-              <Create_post />
               <div className="posts123">
               {posts.map(post => {
               return (

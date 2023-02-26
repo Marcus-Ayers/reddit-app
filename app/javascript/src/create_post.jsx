@@ -72,12 +72,12 @@ class CreatePost extends React.Component {
               <div className="dropdown-menu">
                 <form onSubmit={this.handleSubmit}>
                   <div className="form-group">
-                    <label htmlFor="title">Title</label>
+                    <label className='post-title-big' htmlFor="title">Title</label>
                     <input type="text" className="form-control" id="title" name="title" value={title} onChange={this.handleChange} required />
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="body">Body</label>
+                    <label className='post-title-big' htmlFor="body">Body</label>
                     <textarea className="form-control" id="body" name="body" rows="3" value={body} onChange={this.handleChange} required></textarea>
                   </div>
 
