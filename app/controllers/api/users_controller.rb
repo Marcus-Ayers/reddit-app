@@ -19,6 +19,7 @@ module Api
 
     def show
       @user = User.find_by(id: params[:id])
+      @posts = Post.where(user_id: @user.id)
       return render json: { error: 'not_found' }, status: :not_found if !@user
 
       render 'api/users/show', status: :ok

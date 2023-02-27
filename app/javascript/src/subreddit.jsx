@@ -51,6 +51,7 @@ class Subreddit extends React.Component {
       created_at,
     } = subreddit
     // console.log("subreddit.jsx " + name)
+   
 
     return (
       <Layout>
@@ -61,7 +62,8 @@ class Subreddit extends React.Component {
               <Create_post subredditId={this.props.subreddit_id}/>
               <div className="posts123">
               {posts.map(post => {
-                console.log(post)
+                 const date = new Date(post.created_at)
+                 const dateToString = date.toLocaleString();
               return (
                 <div key={post.id} className="col-6 col-lg-4 mb-3 post">
                   <div className="post-header">
@@ -70,7 +72,7 @@ class Subreddit extends React.Component {
                   <p className='subreddit-name'>r/{post.subreddit.name} </p>
                   </a>
                   <a href={`/user/${post.user.id}`}>
-                  <p className='post-info user-name'>Posted by u/{post.user.username} {post.created_at}</p>
+                  <p className='post-info user-name'>Posted by u/{post.user.username} - {dateToString}</p>
                   </a>
                   </div>
                   <a href={`${this.props.subreddit_id}/post/${post.id}`}>

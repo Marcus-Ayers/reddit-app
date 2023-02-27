@@ -98,6 +98,7 @@ class Home extends React.Component {
         <div className="container background">
           <div className="row">
             <div className="col-7 mr-5 content">
+              <h1 className='home-page-banner'> Home </h1>
               <div className="posts123">
               {posts.map(post => {
                     const date = new Date(post.created_at)

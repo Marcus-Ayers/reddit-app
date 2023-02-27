@@ -154,7 +154,7 @@ body, .content  {
 
 .user-page {
 display: flex;
-min-height: 250px;
+min-height: 150px;
 background-color: #1A1A1B;
 margin-top: 15px;
 width: 100%;
@@ -165,11 +165,20 @@ border-radius: 5px;
 .user-page2 {
   display: flex;
   justify-content: center;
-  min-height: 250px;
+  min-height: 100px;
   width: 100%
 }
 .user-page-info {
   color: white;
+}
+
+.user-posts {
+  display: flex;
+  justify-content: center;
+}
+.user-posts-border {
+  border-top: solid 1px rgb(79,79,79);
+
 }
 
 .subreddits-header {
@@ -236,5 +245,17 @@ border-radius: 5px;
 .form-control{
 
   background-color : #7b7f83!important; 
+
+}
+
+.home-page-banner {
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: solid 1px rgb(79,79,79);
+
+
 
 }

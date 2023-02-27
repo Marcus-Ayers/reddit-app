@@ -7,7 +7,4 @@ json.post do
   json.comments @post.comments
   json.created_at @post.created_at
 
-  # json.subreddit do
-  #   json.id @subreddit.id
-  # end
 end
