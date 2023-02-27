@@ -7,11 +7,63 @@ import { handleErrors } from '@utils/fetchHelper';
 
 
 class Home extends React.Component {
-  state = {
-    posts: [],
-    subreddits: []
-    
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+      name: '',
+      description: '',
+      posts: [],
+      subreddits: [],
+    }
+    this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  toggleDropdown() {
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen
+    }));
+  }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { name, description } = this.state;
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  
+    fetch('/api/subreddits', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
+      },
+      body: JSON.stringify({
+        name,
+        description,
+      }),
+    })
+      .then(handleErrors)
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          isOpen: false,
+          name: '',
+          description: '',
+        });
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
   
   componentDidMount() {
     fetch(`/api/posts/all`)
@@ -37,7 +89,7 @@ class Home extends React.Component {
   }
 
   render () {
-    const {posts, subreddits } = this.state;
+    const {posts, subreddits, isOpen, name, description } = this.state;
     return (
       <Layout>
         <div className="container background">
@@ -49,14 +101,14 @@ class Home extends React.Component {
                 <div key={post.id} className="col-6 col-lg-4 mb-3 post">
                   <div className="post-header">
 
-                  <a href={`/subreddit/${post.subreddit.id}`} className="text-body text-decoration-none">
-                  <p className='subreddit-name'>r/{post.subreddit.name} </p>
+                  <a href={`/subreddit/${post.subreddit?.id}`} className="text-body text-decoration-none">
+                  <p className='subreddit-name'>r/{post.subreddit?.name} </p>
                   </a>
                   <a href={`/user/${post.user.id}`}>
                   <p className='post-info user-name'>Posted by u/{post.user.username} {post.created_at}</p>
                   </a>
                   </div>
-                  <a href={`subreddit/${post.subreddit.id}/post/${post.id}`}>
+                  <a href={`subreddit/${post.subreddit?.id}/post/${post.id}`}>
                     <h6 className="mb-3 post-title">{post.title}</h6>
                   </a>
                 </div>
@@ -73,6 +125,48 @@ class Home extends React.Component {
                   </a>
                 </div>
               ))}
+              <div className="dropdown">
+        <button
+          className="btn btn-primary dropdown-toggle"
+          type="button"
+          onClick={this.toggleDropdown}
+        >
+          Create Subreddit
+        </button>
+        {isOpen && (
+          <div className="dropdown-menu">
+            <form onSubmit={this.handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="name">Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="name"
+                  name="name"
+                  value={name}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="description">Description</label>
+                <textarea
+                  className="form-control"
+                  id="description"
+                  name="description"
+                  rows="3"
+                  value={description}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+              <button type="submit" className="btn btn-primary">
+                Create
+              </button>
+            </form>
+          </div>
+        )}
+      </div>
             </div>
           </div>
         </div>

@@ -43,10 +43,12 @@ ActiveRecord::Schema.define(version: 2023_02_08_221139) do
   end
 
   create_table "subreddits", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.string "name"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_subreddits_on_user_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -67,4 +69,5 @@ ActiveRecord::Schema.define(version: 2023_02_08_221139) do
   add_foreign_key "posts", "subreddits"
   add_foreign_key "posts", "users"
   add_foreign_key "sessions", "users"
+  add_foreign_key "subreddits", "users"
 end

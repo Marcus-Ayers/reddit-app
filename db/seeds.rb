@@ -6,9 +6,9 @@ User.create(username: 'Standard-composer', email: 'user2@example.com', password:
 User.create(username: 'grapejpeg', email: 'user3@example.com', password: 'password')
 
 # create some sample subreddits
-subreddit1 = Subreddit.create(name: 'Ask Reddit', description: 'r/AskReddit is the place to ask and answer thought-provoking questions.')
-subreddit2 = Subreddit.create(name: 'Funny', description: "Welcome to r/Funny, Reddit's largest humour depository.")
-subreddit3 = Subreddit.create(name: 'News', description: 'The place for news articles about current events in the United States and the rest of the world. Discuss it all here.')
+# subreddit1 = Subreddit.create(name: 'Ask Reddit', description: 'r/AskReddit is the place to ask and answer thought-provoking questions.')
+# subreddit2 = Subreddit.create(name: 'Funny', description: "Welcome to r/Funny, Reddit's largest humour depository.")
+# subreddit3 = Subreddit.create(name: 'News', description: 'The place for news articles about current events in the United States and the rest of the world. Discuss it all here.')
 
 # create some sample posts
 Post.create(title: 'What is the best programming language?', body: 'title ^', subreddit: subreddit1, user: User.first)
