@@ -7,10 +7,11 @@ class User extends React.Component {
   state = {
     user: {},
     loading: true,
+    post: [],
   }
 
   componentDidMount() {
-    fetch(`/api/users/3`)
+    fetch(`/api/users/${this.props.user_id}`)
       .then(handleErrors)
       .then(data => {
         this.setState({
@@ -18,6 +19,8 @@ class User extends React.Component {
           loading: false,
         })
       })
+
+      
   }
 
   render () {
@@ -52,9 +55,10 @@ class User extends React.Component {
 document.addEventListener('DOMContentLoaded', () => {
   const node = document.getElementById('params');
   const data = JSON.parse(node.getAttribute('data-params'));
+  console.log(data.user)
 
   ReactDOM.render(
-    <User user_id={data.user_id} />,
+    <User user_id={data.user} />,
     document.body.appendChild(document.createElement('div')),
   )
 })

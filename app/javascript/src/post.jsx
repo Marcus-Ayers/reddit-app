@@ -72,7 +72,6 @@ class Post extends React.Component {
     const {
       id,
       title,
-      // subreddit,
       username
     } = post
 
@@ -80,7 +79,11 @@ class Post extends React.Component {
      body,
    } = comment
 
-  //  console.log(body)
+   const date = new Date(post.created_at)
+   const dateToString = date.toLocaleString();
+   console.log(dateToString)
+
+  //  console.log(post)
 
     return (
       <Layout>
@@ -88,10 +91,8 @@ class Post extends React.Component {
           <div className="row">
             <div className=" col-7 mr-5 mb-3 post-background">
               <div className="">
-
               <div className="mb-3">
-              <p className='post-info'>Posted by u/{username} {post.created_at}</p>
-
+              <p className='post-info'>Posted by u/{post.user?.username} - {dateToString}</p>
                 <h3 className="mb-0 post-title-big">{title}</h3>
                 <p className="mb-0 post-description"><small><b>{post.body}</b></small></p>
               </div>

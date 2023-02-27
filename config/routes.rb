@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get '/subreddit/:id' => 'static_pages#subreddit'
   get 'subreddit/:sub_id/post/:post_id' => 'static_pages#post'
-  get '/user/:id' => 'static_pages#user'
+  get '/user/:user_id' => 'static_pages#user'
   get '/login' => 'static_pages#login'
   delete '/sessions' => 'sessions#destroy'
   post '/subreddits/:sub_id/posts' => 'posts#create'

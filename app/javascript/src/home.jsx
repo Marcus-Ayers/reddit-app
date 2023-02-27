@@ -87,9 +87,12 @@ class Home extends React.Component {
         })
       }) 
   }
+  
 
   render () {
     const {posts, subreddits, isOpen, name, description } = this.state;
+  //   const date = new Date(post.created_at)
+  //  const dateToString = date.toLocaleString();
     return (
       <Layout>
         <div className="container background">
@@ -97,6 +100,9 @@ class Home extends React.Component {
             <div className="col-7 mr-5 content">
               <div className="posts123">
               {posts.map(post => {
+                    const date = new Date(post.created_at)
+                    const dateToString = date.toLocaleString();
+                    console.log(post)
               return (
                 <div key={post.id} className="col-6 col-lg-4 mb-3 post">
                   <div className="post-header">
@@ -105,7 +111,7 @@ class Home extends React.Component {
                   <p className='subreddit-name'>r/{post.subreddit?.name} </p>
                   </a>
                   <a href={`/user/${post.user.id}`}>
-                  <p className='post-info user-name'>Posted by u/{post.user.username} {post.created_at}</p>
+                  <p className='post-info user-name'>Posted by u/{post.user.username} - {dateToString}</p>
                   </a>
                   </div>
                   <a href={`subreddit/${post.subreddit?.id}/post/${post.id}`}>
