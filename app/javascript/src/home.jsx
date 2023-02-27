@@ -60,7 +60,9 @@ class Home extends React.Component {
         window.location.reload();
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error)
+        window.alert("You need to be logged in to create a subreddit");
+
       });
   };
   
@@ -103,7 +105,7 @@ class Home extends React.Component {
               {posts.map(post => {
                     const date = new Date(post.created_at)
                     const dateToString = date.toLocaleString();
-                    console.log(post)
+                    // console.log(post)
               return (
                 <div key={post.id} className="col-6 col-lg-4 mb-3 post">
                   <div className="post-header">

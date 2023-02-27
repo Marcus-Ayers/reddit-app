@@ -78,14 +78,11 @@ class User extends React.Component {
 
               {posts.map(post => {
                 if (post.user.id == this.props.user_id) {
-                console.log(post.user.id + " " + post.user.username)
-                console.log("user ID " + this.props.user_id)
                     const date = new Date(post.created_at)
                     const dateToString = date.toLocaleString();
               return (
                 <div key={post.id} className="col-6 col-lg-4 mb-3 post">
                   <div className="post-header">
-
                   <a href={`/subreddit/${post.subreddit?.id}`} className="text-body text-decoration-none">
                   <p className='subreddit-name'>r/{post.subreddit?.name} </p>
                   </a>
@@ -93,7 +90,7 @@ class User extends React.Component {
                   <p className='post-info user-name'>Posted by u/{post.user.username} - {dateToString}</p>
                   </a>
                   </div>
-                  <a href={`subreddit/${post.subreddit?.id}/post/${post.id}`}>
+                  <a href={`/subreddit/${post.subreddit?.id}/post/${post.id}`}>
                     <h6 className="mb-3 post-title">{post.title}</h6>
                   </a>
                 </div>

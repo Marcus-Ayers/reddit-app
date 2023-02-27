@@ -4,6 +4,9 @@ class SubredditsController < ApplicationController
   def create
     token = cookies.signed[:reddit_session_token]
     session = Session.find_by(token: token)
+    if session.nil?
+      render json: { error: "You must be logged in to create a subreddit" }, status: :unauthorized
+    else
     @subreddit = session.user.subreddits.new(subreddit_params)
     if @subreddit.save
       render json: { subreddit: @subreddit }, status: :created
@@ -11,6 +14,7 @@ class SubredditsController < ApplicationController
       render json: { error: @subreddit.errors.full_messages }, status: :unprocessable_entity
     end
   end
+end
   
 
   def index
