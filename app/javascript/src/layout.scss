@@ -255,7 +255,11 @@ border-radius: 5px;
   padding-bottom: 15px;
   margin-bottom: 15px;
   border-bottom: solid 1px rgb(79,79,79);
+}
 
-
-
+.footer {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
 }

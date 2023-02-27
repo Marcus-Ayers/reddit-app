@@ -129,6 +129,7 @@ class Layout extends Component {
     // Render the layout with the navigation bar and footer
     return (
       <React.Fragment>
+
         <nav className="navbar navbar-expand navbar-light home-background">
           
           <div className="container-fluid">
@@ -143,9 +144,9 @@ class Layout extends Component {
                   {authenticated ? (
                     // Render the logout button if the user is authenticated
                     logoutButton
-                  ) : (
-                    // Render the login and signup buttons if the user is not authenticated
-                    <a href={`/login`}>
+                    ) : (
+                      // Render the login and signup buttons if the user is not authenticated
+                      <a href={`/login`}>
                       <button type="button" className="btn btn-outline-primary mr-4 login-btn">Log In</button>
                       <button type="button" className="btn btn-primary signup-btn">Sign up</button>
                     </a>
@@ -155,14 +156,16 @@ class Layout extends Component {
             </div>
           </div>
         </nav>
+                        <div className="footer">
         {/* Render the child components */}
         {this.props.children}
         {/* Footer */}
-        <footer className="p-3 home-background">
+        <footer className="p-3 home-background ">
           <div>
             <p className="me-3 mb-0 text-secondary">Reddit Clone</p>
           </div>
         </footer>
+                  </div>
       </React.Fragment>
     );
   }
