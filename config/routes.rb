@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     post '/sessions' => 'sessions#create'
     delete '/sessions' => 'sessions#destroy'
     post '/subreddits/:sub_id/posts' => 'posts#create'
-
+    delete '/subreddits/:sub_id/posts/:post_id' => 'posts#destroy'
 
   # get 'posts' => 'posts#index'
   resources :subreddits, except: [:destroy] do

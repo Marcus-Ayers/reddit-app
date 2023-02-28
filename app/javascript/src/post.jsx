@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Layout from '@src/layout';
-import { handleErrors } from '@utils/fetchHelper';
+import { handleErrors, safeCredentials } from '@utils/fetchHelper';
 import Create_post from './create_post';
 
 class Post extends React.Component {
@@ -12,9 +12,25 @@ class Post extends React.Component {
     subreddit: [],
     comment: [],
     loading: true,
+    username: [],
+    authenticated: false,
+
   }
 
   componentDidMount() {
+    fetch('/api/authenticated')
+      .then(handleErrors)
+      .then(data => {
+        console.log(data)
+        this.setState({
+          username: data.username,
+          authenticated: data.authenticated,
+        })
+      })
+      .catch(error => {
+        console.error("XYXYXYXYXYXYXYXYXYYXYXYXYXYY " + error);
+      });
+
     fetch(`/api/subreddits/${this.props.subreddit_id}`)
       .then(handleErrors)
       .then(data => {
@@ -56,11 +72,36 @@ class Post extends React.Component {
           
         })
       })
+  }
+  removePost = e => {
+    e.preventDefault();
+    fetch(`/api/subreddits/${this.props.subreddit_id}/posts/${this.props.post_id}`, safeCredentials({
+        method: 'DELETE',
+    }))
+    .then(response => {
+      // console.log(response)
+        if (!response.ok) {
+            throw Error(response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data); 
+        
+    })
+    .catch(error => {
       
+        console.error(error);
+        this.setState({
+            error: 'Sorry, there was a problem deleting the post. Please try again later.'
+        });
+    });
   }
 
+  
   render () {
-    const { post, subreddit, loading, comment } = this.state;
+    
+    const { post, subreddit, loading, comment, username } = this.state;
     if (loading) {
       return <p>loading...</p>;
     };
@@ -72,7 +113,6 @@ class Post extends React.Component {
     const {
       id,
       title,
-      username
     } = post
 
    const {
@@ -81,9 +121,11 @@ class Post extends React.Component {
 
    const date = new Date(post.created_at)
    const dateToString = date.toLocaleString();
-   console.log(dateToString)
-
-  //  console.log(post)
+  //  const { username } = this.props.currentUser;
+   const postUser = post.user ? post.user.username : "";
+const username2 = post.user?.username 
+// console.log(username2)
+console.log(postUser)
 
     return (
       <Layout>
@@ -95,6 +137,9 @@ class Post extends React.Component {
               <p className='post-info'>Posted by u/{post.user?.username} - {dateToString}</p>
                 <h3 className="mb-0 post-title-big">{title}</h3>
                 <p className="mb-0 post-description"><small><b>{post.body}</b></small></p>
+                {username === postUser &&
+                  <button onClick={this.removePost} >delete</button>
+                }
               </div>
               <hr />
               </div>
@@ -119,9 +164,9 @@ class Post extends React.Component {
 document.addEventListener('DOMContentLoaded', () => {
   const node = document.getElementById('params');
   const data = JSON.parse(node.getAttribute('data-params'));
-  console.log(data)
-  console.log("The subreddit ID is " + data.subreddit_id)
-  console.log("The post ID is " + data.post_id)
+  // console.log(data)
+  // console.log("The subreddit ID is " + data.subreddit_id)
+  // console.log("The post ID is " + data.post_id)
   ReactDOM.render(
     <Post subreddit_id={data.subreddit_id} post_id={data.post_id} />,
     document.body.appendChild(document.createElement('div')),

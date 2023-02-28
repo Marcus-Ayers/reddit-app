@@ -15,6 +15,29 @@ module Api
       end
     end
 
+    def destroy
+      token = cookies.signed[:reddit_session_token]
+      session = Session.find_by(token: token)
+
+      return render json: { success: false } unless session
+
+      user = session.user
+      post = Post.find_by(id: params[:post_id])
+
+      # if property and property.user == user and property.destroy
+      if post && (post.user == user) && post.destroy
+        render json: {
+          success: true
+        }
+      else
+        render json: {
+          success: false
+        }
+      end
+      
+    end
+    
+
     def all
       @posts = Post.all.order(created_at: :desc)
       render 'api/posts/index', status: :ok
