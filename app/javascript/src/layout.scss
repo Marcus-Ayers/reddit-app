@@ -75,11 +75,11 @@ body, .content  {
 .name-infobox, .description-infobox {
   color: white;
 }
-.description-infobox {
-  border-bottom: solid 1px white;
-  padding-bottom: 15px;
-  margin: 0px;
-}
+// .description-infobox {
+//   border-bottom: solid 1px white;
+//   padding-bottom: 15px;
+//   margin: 0px;
+// }
 
 .create-post-button {
   border-radius: 20px;
@@ -262,4 +262,25 @@ border-radius: 5px;
   min-height: 100vh;
   flex-direction: column;
   justify-content: space-between;
+}
+
+
+
+.delete-post-button {
+  border-radius: 10px;
+  float: right;
+  margin-top: 5px;
+}
+
+
+.create-subreddit-button {
+  border-radius: 20px;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-top: 1px solid white;
+}
+
+.sub-button-border {
+  border-top: 1px solid white;
 }

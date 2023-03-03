@@ -75,12 +75,12 @@ class CreatePost extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                   <div className="form-group">
                     <label className='post-title-big' htmlFor="title">Title</label>
-                    <input type="text" className="form-control" id="title" name="title" value={title} onChange={this.handleChange} required />
+                    <input type="text" className="form-control text-white" id="title" name="title" value={title} onChange={this.handleChange} required />
                   </div>
 
                   <div className="form-group">
                     <label className='post-title-big' htmlFor="body">Body</label>
-                    <textarea className="form-control" id="body" name="body" rows="3" value={body} onChange={this.handleChange} required></textarea>
+                    <textarea className="form-control text-white" id="body" name="body" rows="3" value={body} onChange={this.handleChange} required></textarea>
                   </div>
 
                   <button type="submit" className="btn btn-primary">

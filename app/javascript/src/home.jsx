@@ -102,7 +102,10 @@ class Home extends React.Component {
             <div className="col-7 mr-5 content">
               <h1 className='home-page-banner'> Home </h1>
               <div className="posts123">
-              {posts.map(post => {
+              {posts.length === 0 ? (
+                  <h6 className='text-white' >There are no posts yet.</h6>
+                ) : (
+              posts.map(post => {
                     const date = new Date(post.created_at)
                     const dateToString = date.toLocaleString();
                     // console.log(post)
@@ -122,22 +125,23 @@ class Home extends React.Component {
                   </a>
                 </div>
               )
-            })}
+            })
+                )}
+                
               </div>
             </div>
             <div className="col-4 info">
               <h1 className='subreddits-header text-danger'>Subreddits</h1>
               {subreddits.map(subreddit => (
-                <div key={subreddit.id}>
+                <div key={subreddit.id} className="sub-names">
                   <a href={`/subreddit/${subreddit.id}`} className="subreddit-name">
                     <p>r/{subreddit.name}</p>
                   </a>
                 </div>
               ))}
-              <div className="dropdown">
+              <div className="dropdown sub-button-border">
         <button
-          className="btn btn-primary dropdown-toggle"
-          type="button"
+          type="button" className="btn btn-light create-subreddit-button"
           onClick={this.toggleDropdown}
         >
           Create Subreddit
@@ -146,10 +150,10 @@ class Home extends React.Component {
           <div className="dropdown-menu">
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
-                <label htmlFor="name">Name</label>
+                <label className='text-white'  htmlFor="name">Name</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control text-white"
                   id="name"
                   name="name"
                   value={name}
@@ -158,9 +162,9 @@ class Home extends React.Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="description">Description</label>
+                <label className='text-white' htmlFor="description">Description</label>
                 <textarea
-                  className="form-control"
+                  className="form-control text-white"
                   id="description"
                   name="description"
                   rows="3"
