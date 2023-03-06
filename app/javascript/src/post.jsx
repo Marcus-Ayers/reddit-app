@@ -150,7 +150,6 @@ class Post extends React.Component {
               <h2 className='name-infobox'>{name || "N/A"}</h2>
               </div>
               <p className='description-infobox'>{description || "N/A"}</p>
-              <button type="button" className="btn btn-light create-post-button">Create Post</button>
               <h1>{body}</h1>
             </div>
           </div>

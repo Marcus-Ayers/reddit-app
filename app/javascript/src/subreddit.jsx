@@ -92,7 +92,6 @@ class Subreddit extends React.Component {
                 <h3 className='name-infobox'>{name}</h3>
               </div>
               <p className='description-infobox'>{description}</p>
-              {/* <button type="button" className="btn btn-light create-post-button">Create Post</button> */}
             </div>
           </div>
         </div>
