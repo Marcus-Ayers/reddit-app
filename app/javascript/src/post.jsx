@@ -131,12 +131,14 @@ class Post extends React.Component {
             <div className=" col-7 mr-5 mb-3 post-background">
               <div className="">
               <div className="mb-3">
-              <p className='post-info'>Posted by u/{post.user?.username} - {dateToString}  
+              <a href={`/user/${post.user?.id}`}>
+              <p className='post-info'>Posted by u/{post.user?.username} - {dateToString}</p>
+              </a>
               {username === postUser &&
               <a href={'/subreddit/1'} >
                   <button type="button" className="btn btn-danger delete-post-button " onClick={this.removePost} >delete</button>
               </a>
-                }</p>
+                }
                 <h3 className="mb-0 post-title-big">{title}</h3>
                 <p className="mb-0 post-description"><small><b>{post.body}</b></small></p>
               </div>

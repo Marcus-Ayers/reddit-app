@@ -25,7 +25,7 @@ class Layout extends Component {
         })
       })
       .catch(error => {
-        console.error("XYXYXYXYXYXYXYXYXYYXYXYXYXYY " + error);
+        console.error("Not Logged in " + error);
       });
   }
 
@@ -33,7 +33,7 @@ class Layout extends Component {
     this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
     if (!this.state.isOpen) { // PUTS THE CURSOR IN THE TITLE FIELD
       setTimeout(() => {
-        document.getElementById('title').focus();
+        document.getElementById('title');
       }, 0);
     }
   };
@@ -98,29 +98,6 @@ class Layout extends Component {
           </div>
         )}
         </div>
-    {/* <Navbar variant="dark" expand="lg">
-    <Container fluid>
-            <Navbar.Collapse>
-              <Nav>
-              <NavDropdown
-              id="nav-dropdown-dark-example navbar-username"
-              title={username}
-              menuVariant="dark"
-            >
-              <NavDropdown.Item>
-              <button type="button" className="btn btn-outline-danger mr-4" onClick={this.handleSignOut}>
-          Sign out
-        </button>
-              </NavDropdown.Item>
-            </NavDropdown>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar> */}
-
-
-
-    
       </form>
       </div>
       
