@@ -6,5 +6,4 @@ json.post do
   json.subreddit @post.subreddit
   json.comments @post.comments
   json.created_at @post.created_at
-
 end

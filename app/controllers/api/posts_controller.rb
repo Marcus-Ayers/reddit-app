@@ -1,6 +1,5 @@
 module Api
   class PostsController < ApplicationController
-
     def create
       @subreddit = Subreddit.find_by(id: params[:subreddit_id])
       token = cookies.signed[:reddit_session_token]
@@ -9,9 +8,9 @@ module Api
       @post = @subreddit.posts.new(post_params)
       @post.user = user # assign the user to the post
       if @post.save
-      #   redirect_to @post, notice: 'Post was successfully created.'
-      # else
-      #   return render json: { error: 'not_found_post_1' }, status: :not_found 
+        #   redirect_to @post, notice: 'Post was successfully created.'
+        # else
+        #   return render json: { error: 'not_found_post_1' }, status: :not_found
       end
     end
 
@@ -27,16 +26,14 @@ module Api
       # if property and property.user == user and property.destroy
       if post && (post.user == user) && post.destroy
         render json: {
-          success: true
+          success: true,
         }
       else
         render json: {
-          success: false
+          success: false,
         }
       end
-      
     end
-    
 
     def all
       @posts = Post.all.order(created_at: :desc)

@@ -7,7 +7,7 @@ module Api
         session = @user.sessions.create
         cookies.permanent.signed[:reddit_session_token] = {
           value: session.token,
-          httponly: true
+          httponly: true,
         }
 
         render 'api/sessions/create', status: :created

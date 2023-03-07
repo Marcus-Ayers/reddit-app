@@ -1,6 +1,6 @@
 module Api
-class HomeController < ApplicationController
-  def index
+  class HomeController < ApplicationController
+    def index
+    end
   end
-end
 end

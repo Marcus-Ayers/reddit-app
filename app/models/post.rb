@@ -10,11 +10,11 @@ class Post < ApplicationRecord
 
   def upvote
     self.votes_count += 1
-    self.save
+    save
   end
-  
+
   def downvote
     self.votes_count -= 1
-    self.save
+    save
   end
 end

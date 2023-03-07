@@ -3,10 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.3'
 
-#CUSTOM
+# CUSTOM
 # gem 'devise'
 gem 'kaminari'
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7'
@@ -46,6 +45,8 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'rubocop', '~> 1.22'
+  gem 'rubocop-airbnb', '~> 5'
 end
 
 group :test do
@@ -54,12 +55,11 @@ group :test do
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-      gem 'sqlite3', '~> 1.4'
-
+  gem 'sqlite3', '~> 1.4'
 end
 group :production do
   # Use pg as the database for Active Record
-  gem 'pg', '~> 1.4.3'
+  gem 'pg', '~> 1.4.6'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
