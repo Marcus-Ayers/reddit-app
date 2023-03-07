@@ -29,6 +29,8 @@ module Api
       render 'api/subreddits/show', status: :ok
     end
 
+    private
+
     def subreddit_params
       params.require(:subreddit).permit(:name, :description)
     end
