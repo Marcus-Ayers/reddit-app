@@ -26,9 +26,8 @@ module Api
 
       # if property and property.user == user and property.destroy
       if post && (post.user == user) && post.destroy
-        render json: {
-          success: true
-        }
+        redirect_to root_path, status: :see_other
+
       else
         render json: {
           success: false

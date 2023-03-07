@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
-
+  
   get '/subreddit/:id' => 'static_pages#subreddit'
   get 'subreddit/:sub_id/post/:post_id' => 'static_pages#post'
   get '/user/:user_id' => 'static_pages#user'
