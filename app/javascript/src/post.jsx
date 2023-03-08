@@ -88,6 +88,9 @@ class Post extends React.Component {
     })
     .then(data => {
         console.log(data); 
+        if (data.success) {
+          window.location.href = '/';
+        }
     })
     .catch(error => {
       
