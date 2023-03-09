@@ -52,7 +52,9 @@ class LoginWidget extends React.Component {
     return (
       <React.Fragment>
         <form onSubmit={this.login}>
+        <label className='post-title-big' htmlFor="title">Email</label>
           <input name="email" type="text" className="form-control form-control-lg mb-3" placeholder="Email" value={email} onChange={this.handleChange} required />
+          <label className='post-title-big' htmlFor="title">Password</label>
           <input name="password" type="password" className="form-control form-control-lg mb-3" placeholder="Password" value={password} onChange={this.handleChange} required />
           <button type="submit" className="btn btn-danger btn-block btn-lg">Log in</button>
           {error && <p className="text-danger mt-2">{error}</p>}
