@@ -9,7 +9,7 @@ module Api
         render json: { success: false }, status: :bad_request
       end
     end
-    
+
     def index
       @users = User.order(created_at: :desc)
       return render json: { error: 'not_found' }, status: :not_found if !@users
@@ -30,6 +30,5 @@ module Api
     def user_params
       params.require(:user).permit(:email, :password, :username)
     end
-
   end
 end

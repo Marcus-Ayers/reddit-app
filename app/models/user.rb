@@ -12,17 +12,17 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
 
   def upvote(post)
-    self.votes.create(post: post, value: 1)
+    votes.create(post: post, value: 1)
   end
-  
+
   def downvote(post)
-    self.votes.create(post: post, value: -1)
+    votes.create(post: post, value: -1)
   end
 
   def subscribed_to?(subreddit)
-    self.subscriptions.find_by(subreddit: subreddit).present?
+    subscriptions.find_by(subreddit: subreddit).present?
   end
-  
+
   after_validation :hash_password
 
   private

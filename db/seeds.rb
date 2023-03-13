@@ -71,13 +71,3 @@
 # Comment.create(body: 'This is a sample comment', post: Post.first, user: User.first)
 # Comment.create(body: 'This is a sample comment', post: Post.second, user: User.second)
 # Comment.create(body: 'This is a sample comment', post: Post.third, user: User.third)
-
-
-
-
-
-
-
-
-
-

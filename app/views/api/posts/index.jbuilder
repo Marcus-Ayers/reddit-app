@@ -11,6 +11,5 @@ json.posts do
     # json.subreddit do
     #   json.id post.subreddit.id
     # end
-    
   end
 end
