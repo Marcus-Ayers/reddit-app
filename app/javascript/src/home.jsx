@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Layout from '@src/layout';
-import Create_post from './create_post';
-// import { handleErrors } from '/Users/marcus/Documents/web-dev/Altcademy/reddit-app/app/javascript/src/utils/fetchHelper';
 import { handleErrors } from '@utils/fetchHelper';
 
 
